@@ -4,12 +4,58 @@ import QtQuick.Window 2.2
 import QtQuick.Dialogs 1.2
 
 ApplicationWindow {
-    title: qsTr("Hello World")
-    width: 640
-    height: 480
+    id: win;
+    property double scale: Screen.width/1920 > Screen.height/1080 ? Screen.height/1080 : Screen.width/1920;
+    title: qsTr("Baggage")
+    width: 1920*scale;
+    height: 1080*scale;
     visible: true
 
-    menuBar: MenuBar {
+    Loader {
+        property int whatIsLoaded: 0;
+        id: ld;
+        source: "room-0.qml"
+    }
+
+
+    MouseArea{
+        id: doorKitchen;
+
+        x: 1180*win.scale;
+        y: (100)*win.scale;
+        width: 315*win.scale;
+        height: 450*win.scale;
+
+        onClicked: {
+            if (ld.whatIsLoaded == 0){
+                ld.source = "kitchen-0.qml";
+                ld.whatIsLoaded = 1;
+                doorKitchen.enabled = false;
+                doorRoom.enabled = true;
+            }
+        }
+    }
+
+    MouseArea{
+        id: doorRoom;
+
+        x: 20*win.scale;
+        y: (1080-250)*win.scale;
+        width: 300*win.scale;
+        height: 200*win.scale;
+        enabled: false;
+
+        onClicked: {
+            if (ld.whatIsLoaded == 1){
+                ld.source = "room-0.qml";
+                ld.whatIsLoaded = 0;
+                doorKitchen.enabled = true;
+                doorRoom.enabled = false;
+            }
+        }
+    }
+
+   /* menuBar: MenuBar {
         Menu {
             title: qsTr("&File")
             MenuItem {
@@ -38,5 +84,5 @@ ApplicationWindow {
             messageDialog.text = caption;
             messageDialog.open();
         }
-    }
+    }*/
 }

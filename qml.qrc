@@ -1,6 +1,14 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>MainForm.ui.qml</file>
+        <file>room-0.qml</file>
+        <file>kitchen-0.qml</file>
+        <file>img/0/door-bot-0.png</file>
+        <file>img/0/door-bot-1.png</file>
+        <file>img/0/door-bot-2.png</file>
+        <file>img/0/door-bot-3.png</file>
+        <file>img/0/door-refr.png</file>
+        <file>img/0/kitchen-0.png</file>
+        <file>img/0/room-0.png</file>
     </qresource>
 </RCC>
