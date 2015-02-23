@@ -2,6 +2,7 @@ import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Window 2.2
 import QtQuick.Dialogs 1.2
+import MyLib 1.0
 
 ApplicationWindow {
     id: win;
@@ -11,12 +12,17 @@ ApplicationWindow {
     height: 1080*scale;
     visible: true
 
+
+
     Loader {
         property int whatIsLoaded: 0;
         id: ld;
         source: "room-0.qml"
     }
-
+    Connections {
+        target: ld.item
+        onPickBag: pickBag();
+    }
 
     MouseArea{
         id: doorKitchen;
@@ -53,6 +59,20 @@ ApplicationWindow {
                 doorRoom.enabled = false;
             }
         }
+    }
+    Image {
+        id: bagLine;
+        visible: false;
+        height: sourceSize.height*win.scale;
+        width: sourceSize.width*win.scale;
+
+        source: "img/bagLine.png"
+
+    }
+
+    function pickBag(){
+        bagLine.visible = true;
+        bag.isCatched = true;
     }
 
    /* menuBar: MenuBar {

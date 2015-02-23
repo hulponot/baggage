@@ -10,5 +10,7 @@
         <file>img/0/door-refr.png</file>
         <file>img/0/kitchen-0.png</file>
         <file>img/0/room-0.png</file>
+        <file>img/bag.png</file>
+        <file>img/bagLine.png</file>
     </qresource>
 </RCC>

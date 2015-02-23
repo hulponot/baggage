@@ -5,6 +5,8 @@ import QtQuick.Dialogs 1.2
 
 Item{
     id: consts;
+    signal pickBag();
+
 property double scale: Screen.width/1920 > Screen.height/1080 ? Screen.height/1080 : Screen.width/1920;
     Image {
         id: bg;
@@ -17,7 +19,7 @@ property double scale: Screen.width/1920 > Screen.height/1080 ? Screen.height/10
     Image {
         id: doorRef;
 
-        x: 1400*consts.scale;
+        x: 1419*consts.scale;
         y: 13*consts.scale;
 
         height: sourceSize.height*consts.scale;
@@ -34,8 +36,8 @@ property double scale: Screen.width/1920 > Screen.height/1080 ? Screen.height/10
     Image {
         id: doorBot_0;
 
-        x: 10*consts.scale;
-        y: 500*consts.scale;
+        x: 75*consts.scale;
+        y: 493*consts.scale;
 
         height: sourceSize.height*consts.scale;
         width: sourceSize.width*consts.scale;
@@ -50,8 +52,8 @@ property double scale: Screen.width/1920 > Screen.height/1080 ? Screen.height/10
     Image {
         id: doorBot_1;
 
-        x: 361*consts.scale;
-        y: 500*consts.scale;
+        x: 412*consts.scale;
+        y: 493*consts.scale;
 
         height: sourceSize.height*consts.scale;
         width: sourceSize.width*consts.scale;
@@ -66,8 +68,8 @@ property double scale: Screen.width/1920 > Screen.height/1080 ? Screen.height/10
     Image {
         id: doorBot_2;
 
-        x: 755*consts.scale;
-        y: 500*consts.scale;
+        x: 796*consts.scale;
+        y: 493*consts.scale;
 
         height: sourceSize.height*consts.scale;
         width: sourceSize.width*consts.scale;
@@ -82,8 +84,8 @@ property double scale: Screen.width/1920 > Screen.height/1080 ? Screen.height/10
     Image {
         id: doorBot_3;
 
-        x: 1109*consts.scale;
-        y: 500*consts.scale;
+        x: 1128*consts.scale;
+        y: 493*consts.scale;
 
         height: sourceSize.height*consts.scale;
         width: sourceSize.width*consts.scale;

@@ -2,7 +2,10 @@ TEMPLATE = app
 
 QT += qml quick widgets
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    bag.cpp \
+    levelinfo.cpp \
+    consts.cpp
 
 RESOURCES += qml.qrc
 
@@ -11,3 +14,8 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
+
+HEADERS += \
+    bag.h \
+    levelinfo.h \
+    consts.h
