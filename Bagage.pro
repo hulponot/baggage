@@ -19,3 +19,5 @@ HEADERS += \
     bag.h \
     levelinfo.h \
     consts.h
+
+DISTFILES +=

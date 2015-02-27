@@ -27,7 +27,7 @@ Item{
         height: sourceSize.height*0.75*consts.scale;
         width: sourceSize.width*0.75*consts.scale;
 
-        visible: !bag.isCatched;
+        visible: !world.isBagCatched();
         source: "img/bag.png"
         MouseArea{
             anchors.fill: parent;
@@ -37,4 +37,28 @@ Item{
             }
         }
     }
+
+
+    Image {
+        id: firstThing;
+
+        x: world.getX("room-0",0);
+        y: world.getY("room-0",0);
+
+        visible: world.isVisible(0);
+        source: "img/" + world.getImageName(0) + ".png";
+
+        MouseArea{
+            anchors.fill: parent;
+            enabled: parent.visible;
+            onClicked: {
+                if(world.isBagCatched()){
+                    parent.visible = false;
+                    pickThing(0);
+                }
+            }
+        }
+    }
+
+
 }

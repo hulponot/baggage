@@ -12,5 +12,11 @@
         <file>img/0/room-0.png</file>
         <file>img/bag.png</file>
         <file>img/bagLine.png</file>
+        <file>img/knife.png</file>
+        <file>img/lucifers.png</file>
+        <file>img/nothing.png</file>
+        <file>img/bag_knife.png</file>
+        <file>img/bag_lucifers.png</file>
+        <file>img/bag_nothing.png</file>
     </qresource>
 </RCC>

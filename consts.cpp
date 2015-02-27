@@ -12,7 +12,7 @@ map<string,vector<Coord> > Consts::roomsCoords;
 Consts::Consts()
 {
     vector<int> coords;
-    coords.push_back(100); coords.push_back(200);
+    coords.push_back(100); coords.push_back(600);
     coords.push_back(100); coords.push_back(500);
     coords.push_back(500); coords.push_back(100);
     coords.push_back(300); coords.push_back(500);
@@ -32,6 +32,9 @@ map<int,string> setMap(int cls)
    if (cls == 0){
        temp[0] = "knife";
        temp[1] = "lucifers";
+
+       for(int i=2;i<MAX_PLACES;i++)
+           temp[i] = "nothing";
    }
    else {
        temp[0] = "s";

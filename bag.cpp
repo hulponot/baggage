@@ -8,6 +8,7 @@ Bag::Bag()
 
     for(int i=0;i<6;i++)
         whatIsIn.push_back("nothing");
+    whatIsIn[0] = "knife";
 }
 
 Bag::~Bag()
@@ -53,7 +54,10 @@ bool Bag::add(string str)
 
 void Bag::remove(int i)
 {
-    whatIsIn[i] = "nothing";
+    for(int j=0;j<5;j++){
+        whatIsIn[j] = whatIsIn[j+1];
+    }
+        whatIsIn[5] = "nothing";
 }
 
 void Bag::setY(int y){

@@ -9,6 +9,9 @@ using std::vector;
 using std::string;
 using std::map;
 
+const int MAX_STUFF =  2;
+const int MAX_PLACES = 4;
+
 struct Coord;
 
 class Consts
@@ -19,6 +22,7 @@ public:
 
     Consts();
     ~Consts();
+
 
     void addRoom(string,vector<int>);
 };

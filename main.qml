@@ -23,6 +23,16 @@ ApplicationWindow {
         target: ld.item
         onPickBag: pickBag();
     }
+    World{
+        id: world;
+    }
+
+    MouseArea{
+        width: 100;
+        height: 100;
+
+        onClicked: world.recreate();
+    }
 
     MouseArea{
         id: doorKitchen;
@@ -68,12 +78,108 @@ ApplicationWindow {
 
         source: "img/bagLine.png"
 
+        Image{
+            id: zero;
+            y: 779*win.scale;
+            anchors.left: parent.left;
+            anchors.leftMargin: 3*win.scale;
+            height: sourceSize.height*win.scale;
+            width: sourceSize.width*win.scale;
+            source: "img/" + world.whatIsInBag(0) + ".png"
+            MouseArea {
+                anchors.fill: parent;
+                onClicked: removeFromBag(0);
+            }
+        }
+        Image{
+            id: one;
+            y: 655*win.scale;
+            anchors.left: parent.left;
+            anchors.leftMargin: 3*win.scale;
+            source: "img/" + world.whatIsInBag(1) + ".png"
+            height: sourceSize.height*win.scale;
+            width: sourceSize.width*win.scale;
+            MouseArea {
+                anchors.fill: parent;
+                onClicked:removeFromBag(1);
+            }
+        }
+        Image{
+            id: two;
+            y: 534*win.scale;
+            anchors.left: parent.left;
+            anchors.leftMargin: 4*win.scale;
+            source: "img/" + world.whatIsInBag(2) + ".png"
+            height: sourceSize.height*win.scale;
+            width: sourceSize.width*win.scale;
+            MouseArea {
+                anchors.fill: parent;
+                onClicked:removeFromBag(2);
+            }
+        }
+        Image{
+            id: three;
+            y: 416*win.scale;
+            anchors.left: parent.left;
+            anchors.leftMargin: 3*win.scale;
+            source: "img/" + world.whatIsInBag(3) + ".png"
+            height: sourceSize.height*win.scale;
+            width: sourceSize.width*win.scale;
+            MouseArea {
+                anchors.fill: parent;
+                onClicked:removeFromBag(3);
+            }
+        }
+        Image{
+            id: four;
+            y: 292*win.scale;
+            anchors.left: parent.left;
+            anchors.leftMargin: 4*win.scale;
+            source: "img/" + world.whatIsInBag(4) + ".png"
+            height: sourceSize.height*win.scale;
+            width: sourceSize.width*win.scale;
+            MouseArea {
+                anchors.fill: parent;
+                onClicked:removeFromBag(4);
+            }
+        }
+        Image{
+            id: five;
+            y: 171*win.scale;
+            anchors.left: parent.left;
+            anchors.leftMargin: 4*win.scale;
+            source: "img/" + world.whatIsInBag(5) + ".png"
+            height: sourceSize.height*win.scale;
+            width: sourceSize.width*win.scale;
+            MouseArea {
+                anchors.fill: parent;
+                onClicked:removeFromBag(5);
+            }
+        }
     }
 
     function pickBag(){
         bagLine.visible = true;
-        bag.isCatched = true;
+        world.catchBag();
     }
+    function bagLibeUpdate(){
+        zero.source = "img/" + world.whatIsInBag(0) + ".png";
+        one.source = "img/" + world.whatIsInBag(1) + ".png";
+        two.source = "img/" + world.whatIsInBag(2) + ".png";
+        three.source = "img/" + world.whatIsInBag(3) + ".png";
+        four.source = "img/" + world.whatIsInBag(4) + ".png";
+        five.source = "img/" + world.whatIsInBag(5) + ".png";
+    }
+    function pickThing(i){
+        world.changeVisible(i);
+        world.addToBag(i);
+        bagLibeUpdate();
+    }
+    function removeFromBag(i){
+        world.removeFromBag(i);
+        bagLibeUpdate();
+    }
+
 
    /* menuBar: MenuBar {
         Menu {
