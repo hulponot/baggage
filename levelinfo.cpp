@@ -103,3 +103,8 @@ void LevelInfo::removeFromBag(int i)
 {
     bag.remove(i);
 }
+
+bool LevelInfo::isBagFull()
+{
+    return ((bag.isFull() == -1) ? true : false);
+}

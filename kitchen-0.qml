@@ -6,14 +6,146 @@ import QtQuick.Dialogs 1.2
 Item{
     id: consts;
     signal pickBag();
+    property string roomTitle: "kitchen-0";
+    property double scale: Screen.width/1920 > Screen.height/1080 ? Screen.height/1080 : Screen.width/1920;
 
-property double scale: Screen.width/1920 > Screen.height/1080 ? Screen.height/1080 : Screen.width/1920;
     Image {
         id: bg;
         width: 1920*consts.scale;
         height: 1080*consts.scale;
 
         source: "img/0/kitchen-0.png";
+    }
+
+    Image {
+        id: firstThing2;
+        property int imgNum: 6;
+        x: world.getX(roomTitle,imgNum)*consts.scale;
+        y: world.getY(roomTitle,imgNum)*consts.scale;
+        height: sourceSize.height*0.75*consts.scale;
+        width: sourceSize.width*0.75*consts.scale;
+        visible: world.isVisible(imgNum);
+        source: "img/" + world.getImageName(imgNum) + ".png";
+
+        MouseArea{
+            anchors.fill: parent;
+            enabled: parent.visible;
+            onClicked: {
+                if(world.isBagCatched()&& !world.isBagFull()){
+                    parent.visible = false;
+                    pickThing(parent.imgNum);
+                }
+            }
+        }
+    }
+
+    Image {
+        id: secondThing2;
+
+        property int imgNum: 7;
+        x: world.getX(roomTitle,imgNum)*consts.scale;
+        y: world.getY(roomTitle,imgNum)*consts.scale;
+        height: sourceSize.height*0.75*consts.scale;
+        width: sourceSize.width*0.75*consts.scale;
+        visible: world.isVisible(imgNum);
+        source: "img/" + world.getImageName(imgNum) + ".png";
+
+        MouseArea{
+            anchors.fill: parent;
+            enabled: parent.visible;
+            onClicked: {
+                if(world.isBagCatched()&& !world.isBagFull()){
+                    parent.visible = false;
+                    pickThing(parent.imgNum);
+                }
+            }
+        }
+    }
+    Image {
+        id: thirdThing2;
+
+        property int imgNum: 8;
+        x: world.getX(roomTitle,imgNum)*consts.scale;
+        y: world.getY(roomTitle,imgNum)*consts.scale;
+        height: sourceSize.height*0.75*consts.scale;
+        width: sourceSize.width*0.75*consts.scale;
+        visible: world.isVisible(imgNum);
+        source: "img/" + world.getImageName(imgNum) + ".png";
+
+        MouseArea{
+            anchors.fill: parent;
+            enabled: parent.visible;
+            onClicked: {
+                if(world.isBagCatched()&& !world.isBagFull()){
+                    parent.visible = false;
+                    pickThing(parent.imgNum);
+                }
+            }
+        }
+    }
+    Image {
+        id: fourthThing2;
+        property int imgNum: 9;
+        x: world.getX(roomTitle,imgNum)*consts.scale;
+        y: world.getY(roomTitle,imgNum)*consts.scale;
+        height: sourceSize.height*0.75*consts.scale;
+        width: sourceSize.width*0.75*consts.scale;
+        visible: world.isVisible(imgNum);
+        source: "img/" + world.getImageName(imgNum) + ".png";
+
+        MouseArea{
+            anchors.fill: parent;
+            enabled: parent.visible;
+            onClicked: {
+                if(world.isBagCatched()&& !world.isBagFull()){
+                    parent.visible = false;
+                    pickThing(parent.imgNum);
+                }
+            }
+        }
+    }
+    Image {
+        id: fifthThing2;
+        property int imgNum: 10;
+        x: world.getX(roomTitle,imgNum)*consts.scale;
+        y: world.getY(roomTitle,imgNum)*consts.scale;
+        height: sourceSize.height*0.75*consts.scale;
+        width: sourceSize.width*0.75*consts.scale;
+        visible: world.isVisible(imgNum);
+        source: "img/" + world.getImageName(imgNum) + ".png";
+
+        MouseArea{
+            anchors.fill: parent;
+            enabled: parent.visible;
+            onClicked: {
+                if(world.isBagCatched()&& !world.isBagFull()){
+                    parent.visible = false;
+                    pickThing(parent.imgNum);
+                }
+            }
+        }
+    }
+    Image {
+        id: sixthThing2;
+
+        property int imgNum: 11;
+        x: world.getX(roomTitle,imgNum)*consts.scale;
+        y: world.getY(roomTitle,imgNum)*consts.scale;
+        height: sourceSize.height*0.75*consts.scale;
+        width: sourceSize.width*0.75*consts.scale;
+        visible: world.isVisible(imgNum);
+        source: "img/" + world.getImageName(imgNum) + ".png";
+
+        MouseArea{
+            anchors.fill: parent;
+            enabled: parent.visible;
+            onClicked: {
+                if(world.isBagCatched()&& !world.isBagFull()){
+                    parent.visible = false;
+                    pickThing(parent.imgNum);
+                }
+            }
+        }
     }
 
     Image {

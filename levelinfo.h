@@ -32,6 +32,7 @@ public:
     Q_INVOKABLE void recreate();
     Q_INVOKABLE void removeFromBag(int i);
     Q_INVOKABLE QString whatIsInBag(int i);
+    Q_INVOKABLE bool isBagFull();
     void setTest(QString &str);
     QString test(){return _test;}
 

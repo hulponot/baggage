@@ -12,11 +12,21 @@ map<string,vector<Coord> > Consts::roomsCoords;
 Consts::Consts()
 {
     vector<int> coords;
-    coords.push_back(100); coords.push_back(600);
-    coords.push_back(100); coords.push_back(500);
-    coords.push_back(500); coords.push_back(100);
-    coords.push_back(300); coords.push_back(500);
+    coords.push_back(1600); coords.push_back(133);
+    coords.push_back(1634); coords.push_back(430);
+    coords.push_back(1360); coords.push_back(850);
+    coords.push_back(80); coords.push_back(870);
+    coords.push_back(840); coords.push_back(420);
+    coords.push_back(1600); coords.push_back(900);
     addRoom("room-0",coords);
+
+    coords.push_back(140); coords.push_back(600);
+    coords.push_back(500); coords.push_back(550);
+    coords.push_back(842); coords.push_back(510);
+    coords.push_back(1220); coords.push_back(650);
+    coords.push_back(1700); coords.push_back(280);
+    coords.push_back(1500); coords.push_back(610);
+    addRoom("kitchen-0",coords);
 }
 
 Consts::~Consts()
@@ -32,8 +42,13 @@ map<int,string> setMap(int cls)
    if (cls == 0){
        temp[0] = "knife";
        temp[1] = "lucifers";
+       temp[2] = "compass";
+       temp[3] = "toothBrush";
+       temp[4] = "cup";
+       temp[5] = "kettle";
+       temp[6] = "phone";
 
-       for(int i=2;i<MAX_PLACES;i++)
+       for(int i=7;i<MAX_PLACES;i++)
            temp[i] = "nothing";
    }
    else {

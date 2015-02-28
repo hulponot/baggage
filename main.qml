@@ -13,6 +13,14 @@ ApplicationWindow {
     visible: true
 
 
+    Timer {
+        id: myTimer;
+        interval: 10000;
+        onTriggered: bagLine.visible = true;
+    }
+    Text {
+        text: myTimer.toString();
+    }
 
     Loader {
         property int whatIsLoaded: 0;
@@ -27,11 +35,11 @@ ApplicationWindow {
         id: world;
     }
 
-    MouseArea{
+   MouseArea{
         width: 100;
         height: 100;
 
-        onClicked: world.recreate();
+        onClicked: myTimer.start();//world.recreate();
     }
 
     MouseArea{

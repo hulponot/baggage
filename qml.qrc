@@ -18,5 +18,19 @@
         <file>img/bag_knife.png</file>
         <file>img/bag_lucifers.png</file>
         <file>img/bag_nothing.png</file>
+        <file>img/compass.png</file>
+        <file>img/bag_compass.png</file>
+        <file>img/bag_cup.png</file>
+        <file>img/bag_kettle.png</file>
+        <file>img/bag_phone.png</file>
+        <file>img/bag_toothBrush.png</file>
+        <file>img/cup.png</file>
+        <file>img/cup.png.png</file>
+        <file>img/kettle.png</file>
+        <file>img/kitchen-0.png</file>
+        <file>img/nothing_TEST.png</file>
+        <file>img/phone.png</file>
+        <file>img/room-0.png</file>
+        <file>img/toothBrush.png</file>
     </qresource>
 </RCC>

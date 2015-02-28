@@ -9,8 +9,8 @@ using std::vector;
 using std::string;
 using std::map;
 
-const int MAX_STUFF =  2;
-const int MAX_PLACES = 4;
+const int MAX_STUFF =  12;
+const int MAX_PLACES = 12;
 
 struct Coord;
 
