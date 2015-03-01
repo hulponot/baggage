@@ -32,5 +32,8 @@
         <file>img/phone.png</file>
         <file>img/room-0.png</file>
         <file>img/toothBrush.png</file>
+        <file>img/0/books.png</file>
+        <file>game.qml</file>
+        <file>menu.qml</file>
     </qresource>
 </RCC>

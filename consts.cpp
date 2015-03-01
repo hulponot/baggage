@@ -12,12 +12,12 @@ map<string,vector<Coord> > Consts::roomsCoords;
 Consts::Consts()
 {
     vector<int> coords;
-    coords.push_back(1600); coords.push_back(133);
-    coords.push_back(1634); coords.push_back(430);
+    coords.push_back(1680); coords.push_back(133);
+    coords.push_back(1604); coords.push_back(430);
     coords.push_back(1360); coords.push_back(850);
     coords.push_back(80); coords.push_back(870);
     coords.push_back(840); coords.push_back(420);
-    coords.push_back(1600); coords.push_back(900);
+    coords.push_back(1640); coords.push_back(900);
     addRoom("room-0",coords);
 
     coords.push_back(140); coords.push_back(600);
@@ -25,7 +25,7 @@ Consts::Consts()
     coords.push_back(842); coords.push_back(510);
     coords.push_back(1220); coords.push_back(650);
     coords.push_back(1700); coords.push_back(280);
-    coords.push_back(1500); coords.push_back(610);
+    coords.push_back(1500); coords.push_back(580);
     addRoom("kitchen-0",coords);
 }
 

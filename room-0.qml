@@ -166,4 +166,13 @@ Item{
             }
         }
     }
+
+    Image {
+        id: books;
+        x: 1600*consts.scale;
+        y: 126 * consts.scale;
+        height: sourceSize.height*consts.scale;
+        width: sourceSize.width*consts.scale;
+        source : "img/0/books.png"
+    }
 }
