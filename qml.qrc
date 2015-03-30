@@ -1,8 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>room-0.qml</file>
-        <file>kitchen-0.qml</file>
+        <file>To Deleteroom-0.qml</file>
+        <file>TO_DELETEkitchen-0.qml</file>
         <file>img/0/door-bot-0.png</file>
         <file>img/0/door-bot-1.png</file>
         <file>img/0/door-bot-2.png</file>
@@ -32,8 +32,10 @@
         <file>img/phone.png</file>
         <file>img/room-0.png</file>
         <file>img/toothBrush.png</file>
-        <file>img/0/books.png</file>
+        <file>img/0/books-0.png</file>
         <file>game.qml</file>
         <file>menu.qml</file>
+        <file>genericRoom.qml</file>
+        <file>genericKitchen.qml</file>
     </qresource>
 </RCC>

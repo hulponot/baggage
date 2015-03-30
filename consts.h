@@ -19,11 +19,13 @@ class Consts
 public:
     static map<int,string> stuff;
     static map<string,vector<Coord> > roomsCoords;
+    static map<int,vector<Coord> > doorsCoords;
+
 
     Consts();
     ~Consts();
 
-
+    void addDoor(int lvl, vector<int> coords);
     void addRoom(string,vector<int>);
 };
 

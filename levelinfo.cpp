@@ -55,6 +55,15 @@ int LevelInfo::getY(QString room, int i)
 {
     return Consts::roomsCoords[room.toStdString()][i].y;
 }
+int LevelInfo::getDoorX(int lvl, int i)
+{
+    return Consts::doorsCoords[lvl][i].x;
+}
+
+int LevelInfo::getDoorY(int lvl, int i)
+{
+    return Consts::doorsCoords[lvl][i].y;
+}
 
 bool LevelInfo::isVisible(int i)
 {
@@ -101,6 +110,12 @@ QString LevelInfo::whatIsInBag(int i)
 
 void LevelInfo::removeFromBag(int i)
 {
+    int where = -1;
+    for (int j=0;j< Consts::stuff.size();j++){
+        if (Consts::stuff[thingOnPlace[j]] == bag.whatIsIn.at(i))
+            where = j;
+    }
+    changeVisible(where);
     bag.remove(i);
 }
 

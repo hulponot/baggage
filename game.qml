@@ -7,10 +7,12 @@ import MyLib 1.0
 Item {
     id: gameItem;
     property int timeLeft: 20;
+    property int level: 0;
     Loader {
         property int whatIsLoaded: 0;
+        property string roomTitle: "room-"+gameItem.level;
         id: ld;
-        source: "room-0.qml"
+        source: "genericRoom.qml"
     }
     Connections {
         target: ld.item
@@ -37,7 +39,8 @@ Item {
 
         onClicked: {
             if (ld.whatIsLoaded == 0){
-                ld.source = "kitchen-0.qml";
+                ld.source = "genericKitchen.qml";
+                ld.roomTitle = "kitchen-"+gameItem.level;
                 ld.whatIsLoaded = 1;
                 doorKitchen.enabled = false;
                 doorRoom.enabled = true;
@@ -56,7 +59,8 @@ Item {
 
         onClicked: {
             if (ld.whatIsLoaded == 1){
-                ld.source = "room-0.qml";
+                ld.source = "genericRoom.qml";
+                ld.roomTitle = "room-"+gameItem.level;
                 ld.whatIsLoaded = 0;
                 doorKitchen.enabled = true;
                 doorRoom.enabled = false;
@@ -188,10 +192,32 @@ Item {
     }
     function removeFromBag(i){
         world.removeFromBag(i);
+        thingsVisibleUpdate();
         bagLibeUpdate();
     }
+    function thingsVisibleUpdate(){
+        //да ужаснется сам Сатана
+        if (ld.whatIsLoaded == 0){
+            ld.source = "";
+            ld.roomTitle = "room-"+gameItem.level;
+            ld.source = "genericRoom.qml";
+            /*sixthThing.visible = world.isVisible(5);
+            fifthThing.visible = world.isVisible(4);
+            fourthThing.visible = world.isVisible(3);
+            thirdThing.visible = world.isVisible(2);
+            secondThing.visible = world.isVisible(1);
+            firstThing.visible = world.isVisible(0);*/
+        }
+        else {
+            ld.source = "";
+            ld.roomTitle = "kitchen-"+gameItem.level;
+            ld.source = "genericKitchen.qml";
+        }
+    }
+
     function theEnd(){
         mainLd.source = "menu.qml";
     }
+
 }
 

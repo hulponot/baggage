@@ -8,8 +8,8 @@ ApplicationWindow {
     id: win;
     property double scale: Screen.width/1920 > Screen.height/1080 ? Screen.height/1080 : Screen.width/1920;
     title: qsTr("Baggage")
-    width: 900//1920*scale;
-    height: 600//1080*scale;
+    width: 1920*scale;
+    height: 1080*scale;
     visible: true
 
     Loader {
@@ -19,7 +19,7 @@ ApplicationWindow {
     }
 
 
-   /* menuBar: MenuBar {
+     /*menuBar: MenuBar {
         Menu {
             title: qsTr("&File")
             MenuItem {
@@ -32,7 +32,7 @@ ApplicationWindow {
             }
         }
     }
-
+    /*
     MainForm {
         anchors.fill: parent
         button1.onClicked: messageDialog.show(qsTr("Button 1 pressed"))

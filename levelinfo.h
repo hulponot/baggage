@@ -25,6 +25,8 @@ public:
     Q_INVOKABLE QString getImageName(int i);
     Q_INVOKABLE int getX(QString room, int i);
     Q_INVOKABLE int getY(QString room, int i);
+    Q_INVOKABLE int getDoorX(int lvl, int i);
+    Q_INVOKABLE int getDoorY(int lvl, int i);
     Q_INVOKABLE bool isVisible(int i);
     Q_INVOKABLE bool isBagCatched();
     Q_INVOKABLE void catchBag();
