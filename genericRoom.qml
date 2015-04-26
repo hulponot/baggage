@@ -172,4 +172,22 @@ Item {
         width: sourceSize.width*consts.scale;
         source : "img/0/books-"+gameItem.level+".png"
     }
+    Image {
+        id: painting;
+        property int imgNum: 6;
+        x: world.getX(roomTitle,imgNum)*consts.scale;
+        y: world.getY(roomTitle,imgNum)*consts.scale;
+        height: sourceSize.height*0.75*consts.scale;
+        width: sourceSize.width*0.75*consts.scale;
+        source: "img/" + world.getTripTo() + "_painting.png";
+
+        MouseArea{
+            anchors.fill: parent;
+            enabled: parent.visible;
+            onClicked: {
+                doorKitchen.enabled = false;
+                ld.source = "about.qml";
+                }
+            }
+        }
 }

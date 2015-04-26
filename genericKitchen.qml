@@ -231,6 +231,25 @@ Item{
         }
     }
 
+    Image {
+        id: reminder;
+        property int imgNum: 0;
+        x: world.getX(roomTitle,imgNum)*consts.scale;
+        y: world.getY(roomTitle,imgNum)*consts.scale;
+        height: sourceSize.height*0.75*consts.scale;
+        width: sourceSize.width*0.75*consts.scale;
+        visible: doorRef.visible;
+        source: "img/reminder.png";
+
+        MouseArea{
+            anchors.fill: parent;
+            enabled: parent.visible;
+            onClicked: {
+                doorRoom.enabled = false;
+                ld.source = "reminder.qml";
+                }
+            }
+        }
     function openDoor(Parent){
         doorBot_0.visible = true;
         doorBot_1.visible = true;

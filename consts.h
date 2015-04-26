@@ -11,6 +11,7 @@ using std::map;
 
 const int MAX_STUFF =  12;
 const int MAX_PLACES = 12;
+const int TRIP_TO_NUM = 3;
 
 struct Coord;
 
@@ -20,6 +21,8 @@ public:
     static map<int,string> stuff;
     static map<string,vector<Coord> > roomsCoords;
     static map<int,vector<Coord> > doorsCoords;
+    static map<int, string> tripTo;
+    static map<int, vector<int> > lvlNeeds;
 
 
     Consts();

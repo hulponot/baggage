@@ -6,11 +6,19 @@ import MyLib 1.0
 
 Item {
     id: gameItem;
-    property int timeLeft: 20;
+
+    World{
+        id: world;
+
+        levelNum: 0;
+    }
+    property int timeLeft: 20 - world.levelNum;
     property int level: 0;
+
     Loader {
         property int whatIsLoaded: 0;
         property string roomTitle: "room-"+gameItem.level;
+        anchors.fill: parent;
         id: ld;
         source: "genericRoom.qml"
     }
@@ -18,16 +26,7 @@ Item {
         target: ld.item
         onPickBag: pickBag();
     }
-    World{
-        id: world;
-    }
 
-   MouseArea{
-        width: 100;
-        height: 100;
-
-        onClicked: myTimer.start();//world.recreate();
-    }
 
     MouseArea{
         id: doorKitchen;
@@ -162,6 +161,8 @@ Item {
             time.text = gameItem.timeLeft.toString();
             if (gameItem.timeLeft <= 5)
                 time.color = "red";
+            else
+                time.color = "lightcyan";
             if (gameItem.timeLeft <= 0)
                 theEnd();
         }
@@ -214,10 +215,22 @@ Item {
             ld.source = "genericKitchen.qml";
         }
     }
-
     function theEnd(){
-        mainLd.source = "menu.qml";
+        world.timeExpired();
+        ld.source = "";
+        ld.source = "genericRoom.qml";
+        doorKitchen.enabled = true;
+        if (ld.whatIsLoaded == 1){
+            ld.source = "genericRoom.qml";
+            ld.roomTitle = "room-"+gameItem.level;
+            ld.whatIsLoaded = 0;
+            doorKitchen.enabled = true;
+            doorRoom.enabled = false;
+        }
+
+        bagLibeUpdate();
+        bagLine.visible = false;
+        gameItem.timeLeft = 21 - world.levelNum;
     }
 
 }
-

@@ -5,10 +5,11 @@
 map<int,string> setMap(int cls);
 
 
-
+map<int, string> Consts::tripTo = setMap(1);
 map<int,string> Consts::stuff = setMap(0);
 map<string,vector<Coord> > Consts::roomsCoords;
 map<int,vector<Coord> > Consts::doorsCoords;
+map<int,vector<int> > Consts::lvlNeeds;
 
 Consts::Consts()
 {
@@ -20,6 +21,8 @@ Consts::Consts()
     coords.push_back(80); coords.push_back(870);
     coords.push_back(840); coords.push_back(420);
     coords.push_back(1640); coords.push_back(900);
+    //painting
+    coords.push_back(750); coords.push_back(100);
     addRoom("room-0",coords);
 
     //да простит господь грехи мои
@@ -29,6 +32,9 @@ Consts::Consts()
     coords.push_back(1220); coords.push_back(650);
     coords.push_back(1700); coords.push_back(280);
     coords.push_back(1500); coords.push_back(580);
+    //reminder
+    coords.at(0) = 1600;
+    coords.at(1) = 200;
     addRoom("kitchen-0",coords);
 
     coords.clear();
@@ -40,6 +46,13 @@ Consts::Consts()
     //for genericRoom
     coords.push_back(1600); coords.push_back(126);
     addDoor(0,coords);
+
+    int lvlNeedsJungle[] = {0,1,3,9,5,6};
+    int lvlNeedsMoution[] = {0,1,3,7,5,6};
+    int lvlNeedsForest[] = {0,1,3,4,5,6};
+    lvlNeeds[0] = vector<int>(lvlNeedsJungle, lvlNeedsJungle + sizeof(lvlNeedsJungle) / sizeof(int) );
+    lvlNeeds[1] = vector<int>(lvlNeedsMoution, lvlNeedsMoution + sizeof(lvlNeedsMoution) / sizeof(int) );
+    lvlNeeds[2] = vector<int>(lvlNeedsForest, lvlNeedsForest + sizeof(lvlNeedsForest) / sizeof(int) );
 }
 
 Consts::~Consts()
@@ -57,15 +70,19 @@ map<int,string> setMap(int cls)
        temp[1] = "lucifers";
        temp[2] = "compass";
        temp[3] = "toothBrush";
-       temp[4] = "cup";
+       temp[4] = "holy_water";
        temp[5] = "kettle";
        temp[6] = "phone";
-
-       for(int i=7;i<MAX_PLACES;i++)
+       temp[7] = "antivenom";
+       temp[8] = "mountion_stuff";
+       temp[9] = "";
+       for(int i=9;i<MAX_PLACES;i++)
            temp[i] = "nothing";
    }
    else {
-       temp[0] = "s";
+       temp[0] = "mountion";
+       temp[1] = "jungle";
+       temp[2] = "forest";
    }
    return temp;
 }

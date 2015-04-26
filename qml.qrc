@@ -1,8 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>To Deleteroom-0.qml</file>
-        <file>TO_DELETEkitchen-0.qml</file>
         <file>img/0/door-bot-0.png</file>
         <file>img/0/door-bot-1.png</file>
         <file>img/0/door-bot-2.png</file>
@@ -25,7 +23,6 @@
         <file>img/bag_phone.png</file>
         <file>img/bag_toothBrush.png</file>
         <file>img/cup.png</file>
-        <file>img/cup.png.png</file>
         <file>img/kettle.png</file>
         <file>img/kitchen-0.png</file>
         <file>img/nothing_TEST.png</file>
@@ -37,5 +34,21 @@
         <file>menu.qml</file>
         <file>genericRoom.qml</file>
         <file>genericKitchen.qml</file>
+        <file>img/reminder.png</file>
+        <file>about.qml</file>
+        <file>img/mountion_painting.png</file>
+        <file>img/jungle_painting.png</file>
+        <file>img/antivenom.png</file>
+        <file>img/bag_antivenom.png</file>
+        <file>reminder.qml</file>
+        <file>img/bag_mountion_stuff.png</file>
+        <file>img/mountion_stuff.png</file>
+        <file>img/jungle.png</file>
+        <file>img/mountion.png</file>
+        <file>roundEnd.qml</file>
+        <file>img/forest_painting.png</file>
+        <file>img/forest.png</file>
+        <file>img/bag_holy_water.png</file>
+        <file>img/holy_water.png</file>
     </qresource>
 </RCC>

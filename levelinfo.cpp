@@ -3,13 +3,14 @@
 
 LevelInfo::LevelInfo(QObject *parent) : QObject(parent)
 {
-
-    _test = "nothing";
-
+    bag = new Bag();
+    //_test = "nothing";
+    iTripTo = 0;
     for (int i=0;i<MAX_PLACES;i++){
         thingOnPlace.append(i);
     }
-
+    _levelNum = 0;
+    allRight = true;
     int size = thingOnPlace.size();
     int tempIndex,tempValue;
     for(int i=0;i<size;i++){
@@ -28,12 +29,12 @@ LevelInfo::LevelInfo(QObject *parent) : QObject(parent)
 
 LevelInfo::~LevelInfo()
 {
-
+    delete bag;
 }
 
-void LevelInfo::setTest(QString &str)
+void LevelInfo::setLevelNum(int str)
 {
-    _test = str;
+    _levelNum = str;
 }
 
 QString LevelInfo::getImageName(int i)
@@ -77,18 +78,18 @@ void LevelInfo::changeVisible(int i)
 
 bool LevelInfo::isBagCatched()
 {
-    return bag.isCatched();
+    return bag->isCatched();
 }
 
 void LevelInfo::catchBag()
 {
-    bag.setIsCatched(true);
+    bag->setIsCatched(true);
 }
 
 void LevelInfo::addToBag(int i)
 {
-    if(bag.isCatched())
-        bag.add(Consts::stuff[thingOnPlace[i]]);
+    if(bag->isCatched())
+        bag->add(Consts::stuff[thingOnPlace[i]]);
 }
 
 void LevelInfo::recreate()
@@ -100,26 +101,51 @@ void LevelInfo::recreate()
 
 QString LevelInfo::whatIsInBag(int i)
 {
-    string str = bag.whatIsIn.at(i);
+    string str = bag->whatIsIn.at(i);
     QString qS;
-    for (int i=0;i<str.size();i++)
+    for (unsigned int i=0;i<str.size();i++)
         qS.append(str.at(i));
     qS.insert(0,"bag_");
     return qS;
 }
 
+QString LevelInfo::getTripTo()
+{
+    string str = Consts::tripTo[iTripTo];
+    QString qS;
+    for (unsigned int i=0;i<str.size();i++)
+        qS.append(str.at(i));
+    return qS;
+}
+
+
 void LevelInfo::removeFromBag(int i)
 {
     int where = -1;
-    for (int j=0;j< Consts::stuff.size();j++){
-        if (Consts::stuff[thingOnPlace[j]] == bag.whatIsIn.at(i))
+    for (unsigned int j=0;j< Consts::stuff.size();j++){
+        if (Consts::stuff[thingOnPlace[j]] == bag->whatIsIn.at(i))
             where = j;
     }
     changeVisible(where);
-    bag.remove(i);
+    bag->remove(i);
 }
 
 bool LevelInfo::isBagFull()
 {
-    return ((bag.isFull() == -1) ? true : false);
+    return ((bag->isFull() == -1) ? true : false);
+}
+void LevelInfo::timeExpired()
+{
+    isDoneRight();
+
+    recreate();
+    setLevelNum(1+levelNum());
+    iTripTo += 1;
+    if (iTripTo>=TRIP_TO_NUM)
+        iTripTo = 0;
+    bag = new Bag();
+}
+bool LevelInfo::isDoneRight()
+{
+   return true;
 }
