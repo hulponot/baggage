@@ -38,9 +38,9 @@ Item {
 
         onClicked: {
             if (ld.whatIsLoaded == 0){
-                ld.source = "genericKitchen.qml";
                 ld.roomTitle = "kitchen-"+gameItem.level;
                 ld.whatIsLoaded = 1;
+                ld.source = "genericKitchen.qml";
                 doorKitchen.enabled = false;
                 doorRoom.enabled = true;
             }
@@ -58,9 +58,9 @@ Item {
 
         onClicked: {
             if (ld.whatIsLoaded == 1){
-                ld.source = "genericRoom.qml";
                 ld.roomTitle = "room-"+gameItem.level;
                 ld.whatIsLoaded = 0;
+                ld.source = "genericRoom.qml";
                 doorKitchen.enabled = true;
                 doorRoom.enabled = false;
             }
@@ -155,6 +155,7 @@ Item {
     }
 
     Timer {
+        id: timer;
         interval: 1000; running: true; repeat: true
         onTriggered: {
             gameItem.timeLeft-=1;
@@ -217,20 +218,27 @@ Item {
     }
     function theEnd(){
         world.timeExpired();
-        ld.source = "";
-        ld.source = "genericRoom.qml";
-        doorKitchen.enabled = true;
-        if (ld.whatIsLoaded == 1){
+        if (world.getTripTo() != "-1"){
+            ld.source = "";
             ld.source = "genericRoom.qml";
-            ld.roomTitle = "room-"+gameItem.level;
-            ld.whatIsLoaded = 0;
             doorKitchen.enabled = true;
-            doorRoom.enabled = false;
-        }
+            if (ld.whatIsLoaded == 1){
+                ld.source = "genericRoom.qml";
+                ld.roomTitle = "room-"+gameItem.level;
+                ld.whatIsLoaded = 0;
+                doorKitchen.enabled = true;
+                doorRoom.enabled = false;
+            }
 
-        bagLibeUpdate();
-        bagLine.visible = false;
-        gameItem.timeLeft = 21 - world.levelNum;
+            bagLibeUpdate();
+            bagLine.visible = false;
+            gameItem.timeLeft = 21 - world.levelNum;
+        }
+        else {
+            timer.stop();
+            ld.source = "";
+            ld.source = "roundEnd.qml";
+        }
     }
 
 }

@@ -1,10 +1,10 @@
 #include "levelinfo.h"
-
+#include <fstream>
+#include <iostream>
 
 LevelInfo::LevelInfo(QObject *parent) : QObject(parent)
 {
     bag = new Bag();
-    //_test = "nothing";
     iTripTo = 0;
     for (int i=0;i<MAX_PLACES;i++){
         thingOnPlace.append(i);
@@ -12,15 +12,15 @@ LevelInfo::LevelInfo(QObject *parent) : QObject(parent)
     _levelNum = 0;
     allRight = true;
     int size = thingOnPlace.size();
+
+    //mix
     int tempIndex,tempValue;
     for(int i=0;i<size;i++){
-        tempIndex = rand()%size;
+        tempIndex = qrand()%size;
         tempValue = thingOnPlace.at(tempIndex);
         thingOnPlace[tempIndex] = thingOnPlace.at(i);
         thingOnPlace[i] = tempValue;
     }
-
-
 
     for (int i=0;i<MAX_PLACES;i++){
         visible.append(true);
@@ -111,6 +111,9 @@ QString LevelInfo::whatIsInBag(int i)
 
 QString LevelInfo::getTripTo()
 {
+    if (iTripTo == -1){
+        return QString("-1");
+    }
     string str = Consts::tripTo[iTripTo];
     QString qS;
     for (unsigned int i=0;i<str.size();i++)
@@ -136,16 +139,41 @@ bool LevelInfo::isBagFull()
 }
 void LevelInfo::timeExpired()
 {
-    isDoneRight();
-
-    recreate();
-    setLevelNum(1+levelNum());
-    iTripTo += 1;
-    if (iTripTo>=TRIP_TO_NUM)
-        iTripTo = 0;
-    bag = new Bag();
+    if(isDoneRight()){
+        recreate();
+        setLevelNum(1+levelNum());
+        iTripTo += 1;
+        if (iTripTo>=TRIP_TO_NUM)
+            iTripTo = 0;
+        bag = new Bag();
+        return;
+    }
+    iTripTo = -1;
 }
 bool LevelInfo::isDoneRight()
 {
-   return true;
+    std::ofstream of("result.txt");
+
+    int counter = 0;
+    if (!isBagFull())
+        return false;
+    for (int i=0;i<Consts::lvlNeeds.at(0).size();i++){
+        string tempThing = Consts::stuff[Consts::lvlNeeds.at(levelNum()).at(i)];
+
+        of<<tempThing;
+
+        for (int j=0;j<6;j++){
+            if (bag->whatIsIn.at(j) == tempThing){
+                //std::cout<<tempThing<<std::endl;
+                of<<"+";
+                //
+                counter++;
+            }
+        }
+        of<<std::endl;
+    }
+    of<<counter;
+    if (counter == 6)
+        return true;
+    return false;
 }

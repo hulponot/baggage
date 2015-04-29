@@ -47,11 +47,11 @@ Consts::Consts()
     coords.push_back(1600); coords.push_back(126);
     addDoor(0,coords);
 
-    int lvlNeedsJungle[] = {0,1,3,9,5,6};
-    int lvlNeedsMoution[] = {0,1,3,7,5,6};
+    int lvlNeedsMoution[] = {0,1,3,8,5,6};
+    int lvlNeedsJungle[] = {0,1,3,7,5,6};
     int lvlNeedsForest[] = {0,1,3,4,5,6};
-    lvlNeeds[0] = vector<int>(lvlNeedsJungle, lvlNeedsJungle + sizeof(lvlNeedsJungle) / sizeof(int) );
-    lvlNeeds[1] = vector<int>(lvlNeedsMoution, lvlNeedsMoution + sizeof(lvlNeedsMoution) / sizeof(int) );
+    lvlNeeds[0] = vector<int>(lvlNeedsMoution, lvlNeedsMoution + sizeof(lvlNeedsMoution) / sizeof(int) );
+    lvlNeeds[1] = vector<int>(lvlNeedsJungle, lvlNeedsJungle + sizeof(lvlNeedsJungle) / sizeof(int) );
     lvlNeeds[2] = vector<int>(lvlNeedsForest, lvlNeedsForest + sizeof(lvlNeedsForest) / sizeof(int) );
 }
 
