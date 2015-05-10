@@ -37,6 +37,7 @@ public:
     Q_INVOKABLE QString whatIsInBag(int i);
     Q_INVOKABLE bool isBagFull();
     Q_INVOKABLE void timeExpired();
+    Q_INVOKABLE QString getLvlNeeds(int room,int i);
     void setLevelNum(int str);
     int levelNum(){return _levelNum;}
     bool isDoneRight();

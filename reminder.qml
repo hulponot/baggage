@@ -30,23 +30,24 @@ Rectangle {
             }
             Row{
                 spacing: 5;
+                property int roomNum: 0;
                 Image {
-                    source: "img/bag_mountion_stuff.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,0) + ".png"
                 }
                 Image {
-                    source: "img/bag_compass.png"
+                    source: "img/"+world.getLvlNeeds(parent.roomNum,1) +".png"
                 }
                 Image {
-                    source: "img/bag_kettle.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,2) + ".png"
                 }
                 Image {
-                    source: "img/bag_knife.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,3) + ".png"
                 }
                 Image {
-                    source: "img/bag_lucifers.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,4) + ".png"
                 }
                 Image {
-                    source: "img/bag_toothBrush.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,5) + ".png"
                 }
             }
 
@@ -55,23 +56,24 @@ Rectangle {
             }
             Row{
                 spacing: 5;
+                property int roomNum: 1;
                 Image {
-                    source: "img/bag_antivenom.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,0) + ".png"
                 }
                 Image {
-                    source: "img/bag_compass.png"
+                    source: "img/"+world.getLvlNeeds(parent.roomNum,1) +".png"
                 }
                 Image {
-                    source: "img/bag_kettle.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,2) + ".png"
                 }
                 Image {
-                    source: "img/bag_knife.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,3) + ".png"
                 }
                 Image {
-                    source: "img/bag_lucifers.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,4) + ".png"
                 }
                 Image {
-                    source: "img/bag_toothBrush.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,5) + ".png"
                 }
             }
             Image {
@@ -79,23 +81,24 @@ Rectangle {
             }
             Row{
                 spacing: 5;
+                property int roomNum: 2;
                 Image {
-                    source: "img/bag_holy_water.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,0) + ".png"
                 }
                 Image {
-                    source: "img/bag_compass.png"
+                    source: "img/"+world.getLvlNeeds(parent.roomNum,1) +".png"
                 }
                 Image {
-                    source: "img/bag_kettle.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,2) + ".png"
                 }
                 Image {
-                    source: "img/bag_knife.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,3) + ".png"
                 }
                 Image {
-                    source: "img/bag_lucifers.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,4) + ".png"
                 }
                 Image {
-                    source: "img/bag_toothBrush.png"
+                    source: "img/" + world.getLvlNeeds(parent.roomNum,5) + ".png"
                 }
             }
         }

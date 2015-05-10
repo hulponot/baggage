@@ -177,3 +177,10 @@ bool LevelInfo::isDoneRight()
         return true;
     return false;
 }
+
+ QString LevelInfo::getLvlNeeds(int room, int i)
+ {
+     string tempThing = "bag_" + Consts::stuff[Consts::lvlNeeds.at(room).at(i)];
+     QString strThingName(tempThing.c_str());
+     return strThingName;
+ }
