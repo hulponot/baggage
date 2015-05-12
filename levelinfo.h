@@ -6,6 +6,9 @@
 #include "consts.h"
 #include "bag.h"
 #include <QList>
+#include <QFile>
+#include <QTextStream>
+
 
 using std::string;
 
@@ -38,6 +41,8 @@ public:
     Q_INVOKABLE bool isBagFull();
     Q_INVOKABLE void timeExpired();
     Q_INVOKABLE QString getLvlNeeds(int room,int i);
+    Q_INVOKABLE int getRecord();
+
     void setLevelNum(int str);
     int levelNum(){return _levelNum;}
     bool isDoneRight();
@@ -54,6 +59,8 @@ private:
     bool allRight;
     QList<int> thingOnPlace;
     QList<bool> visible;
+    QFile recordFileStream;
+    int record;
 
 
 

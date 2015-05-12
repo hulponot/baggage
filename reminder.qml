@@ -7,17 +7,8 @@ Rectangle {
     width: win.width;
     height: win.height * 2;
 
-    Button{
-        anchors.right: parent.right; anchors.rightMargin: 30;
-        anchors.top: parent.top; anchors.topMargin: 80*win.scale;
-        text: "Back";
-        height: 200*win.scale;
-        onClicked: {
-            doorRoom.enabled = true;
-            ld.source = "genericKitchen.qml";
-        }
 
-    }
+
     ScrollView{
         anchors.fill: parent;
         anchors.top: parent.top; anchors.topMargin: 80*win.scale;
@@ -101,6 +92,16 @@ Rectangle {
                     source: "img/" + world.getLvlNeeds(parent.roomNum,5) + ".png"
                 }
             }
+        }
+    }
+    Button{
+        anchors.right: parent.right; anchors.rightMargin: 30;
+        anchors.top: parent.top; anchors.topMargin: 80*win.scale;
+        text: "Back";
+        height: 200*win.scale;
+        onClicked: {
+            doorRoom.enabled = true;
+            ld.source = "genericKitchen.qml";
         }
     }
 }

@@ -9,11 +9,11 @@ Item {
 
     World{
         id: world;
-
         levelNum: 0;
     }
     property int timeLeft: 20 - world.levelNum;
     property int level: 0;
+
 
     Loader {
         property int whatIsLoaded: 0;
@@ -43,6 +43,7 @@ Item {
                 ld.source = "genericKitchen.qml";
                 doorKitchen.enabled = false;
                 doorRoom.enabled = true;
+                doorExit.enabled = false;
             }
         }
     }
@@ -63,7 +64,21 @@ Item {
                 ld.source = "genericRoom.qml";
                 doorKitchen.enabled = true;
                 doorRoom.enabled = false;
+                doorExit.enabled = true;
             }
+        }
+    }
+
+    MouseArea{
+        id: doorExit;
+
+        x: 120*win.scale;
+        y: (100)*win.scale;
+        width: 315*win.scale;
+        height: 470*win.scale;
+
+        onClicked: {
+            theEnd();
         }
     }
     Image {
@@ -174,7 +189,56 @@ Item {
         color: "lightcyan";
         font.pixelSize: 60 * win.scale; font.bold: true;
     }
+    Timer {
+        id: baloonTimer;
+        interval: 1300; running: false; repeat: false;
 
+        onTriggered: {
+            baloons.y = 1060*win.scale;
+            container.state = '';
+        }
+    }
+
+    Item {
+        id: container;
+        anchors.right: parent.right;
+        Image {
+            id: baloons;
+            anchors.right: parent.right; anchors.rightMargin: 100*win.scale;
+            y: 1060*win.scale;
+            visible: true;
+            height: sourceSize.height*win.scale;
+            width: sourceSize.width*win.scale;
+            source: "img/baloons.png"
+            }
+        states: [
+            // This adds a second state to the container where the rectangle is farther to the right
+            State { name: "flyingUp"
+                PropertyChanges {
+                    target: baloons
+                    y: -800;
+                }
+            }
+        ]
+        transitions: [
+            // This adds a transition that defaults to applying to all state changes
+            Transition {
+                // This applies a default NumberAnimation to any changes a state change makes to x or y properties
+                NumberAnimation { properties: "y"; duration: 1300;}
+            }
+        ]
+    }
+    Rectangle{
+        color: "#FFCC99";
+        width: 200 * win.scale;
+        height: 50 * win.scale;
+        Text{
+            id: textRecord;
+            color: "#FF66CC";
+            font.pixelSize: 45 * win.scale;
+            text: "Record: " + world.getRecord();
+        }
+    }
     function pickBag(){
         bagLine.visible = true;
         world.catchBag();
@@ -198,17 +262,10 @@ Item {
         bagLibeUpdate();
     }
     function thingsVisibleUpdate(){
-        //да ужаснется сам Сатана
         if (ld.whatIsLoaded == 0){
             ld.source = "";
             ld.roomTitle = "room-"+gameItem.level;
             ld.source = "genericRoom.qml";
-            /*sixthThing.visible = world.isVisible(5);
-            fifthThing.visible = world.isVisible(4);
-            fourthThing.visible = world.isVisible(3);
-            thirdThing.visible = world.isVisible(2);
-            secondThing.visible = world.isVisible(1);
-            firstThing.visible = world.isVisible(0);*/
         }
         else {
             ld.source = "";
@@ -218,7 +275,12 @@ Item {
     }
     function theEnd(){
         world.timeExpired();
+        textRecord.text ="Record: " + world.getRecord();
         if (world.getTripTo() != "-1"){
+
+            container.state = 'flyingUp';
+            baloonTimer.start();
+
             ld.source = "";
             ld.source = "genericRoom.qml";
             doorKitchen.enabled = true;

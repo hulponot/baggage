@@ -50,5 +50,11 @@
         <file>img/forest.png</file>
         <file>img/bag_holy_water.png</file>
         <file>img/holy_water.png</file>
+        <file>img/baloons.png</file>
+        <file>wav/lokomotiv.mp3</file>
+        <file>img/music_off.png</file>
+        <file>img/music_on.png</file>
+        <file>img/tutor.png</file>
+        <file>tutor.qml</file>
     </qresource>
 </RCC>

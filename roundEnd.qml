@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
     id: menuOverlay;
+    signal pickBag();
     color: "palegreen";
     property int scaledHeight: 100 * win.scale;
     property int scaledWidth: 500 * win.scale;
@@ -14,7 +15,7 @@ Rectangle {
             color: "palegreen";
             Text {
                 anchors.centerIn: parent;
-                text: "FAIL on " + world.levelNum + 1;
+                text: "FAIL on " + (world.levelNum + 1);
                 font.pixelSize: parent.height;
                 color: "darkolivegreen";
                 font.family: "Impact"
@@ -39,7 +40,10 @@ Rectangle {
                 anchors.fill: parent;
                 onPressed: colorChangeOnClick(2);
                 onReleased: colorChangeOnClick(3);
-                onClicked: mainLd.source = "menu.qml";
+                onClicked:{
+                    music.stop();
+                    mainLd.source = "menu.qml";
+                }
             }
         }
     }

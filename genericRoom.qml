@@ -10,8 +10,8 @@ Item {
 
     Image {
         id: bg;
-        width: 1920*consts.scale;
-        height: 1080*consts.scale;
+        width: 1920*win.scale;
+        height: 1080*win.scale;
 
         source: "img/"+gameItem.level+"/"+roomTitle+".png";
     }

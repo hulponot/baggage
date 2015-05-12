@@ -1,6 +1,6 @@
 #include "levelinfo.h"
-#include <fstream>
 #include <iostream>
+
 
 LevelInfo::LevelInfo(QObject *parent) : QObject(parent)
 {
@@ -25,10 +25,17 @@ LevelInfo::LevelInfo(QObject *parent) : QObject(parent)
     for (int i=0;i<MAX_PLACES;i++){
         visible.append(true);
     }
+
+    char buf[5];
+    recordFileStream.setFileName("records.bgg");
+    recordFileStream.open(QIODevice::ReadWrite);
+    recordFileStream.read(buf, 5);
+    record = atoi(buf);
 }
 
 LevelInfo::~LevelInfo()
 {
+    recordFileStream.close();
     delete bag;
 }
 
@@ -148,31 +155,40 @@ void LevelInfo::timeExpired()
         bag = new Bag();
         return;
     }
+
+    if(record < (levelNum())){
+        QFile out("records.bgg");
+        out.open(QIODevice::ReadWrite | QIODevice::Truncate);
+        char buf[5];
+        sprintf(buf, "%i",(levelNum()));
+       // itoa((levelNum()),buf,10);
+        out.write(buf);
+        out.close();
+    }
+    char buf[5];
+    recordFileStream.close();
+    recordFileStream.setFileName("records.bgg");
+    recordFileStream.open(QIODevice::ReadWrite);
+    recordFileStream.read(buf, 5);
+    record = atoi(buf);
+
+
     iTripTo = -1;
 }
 bool LevelInfo::isDoneRight()
 {
-    std::ofstream of("result.txt");
-
     int counter = 0;
     if (!isBagFull())
         return false;
     for (int i=0;i<Consts::lvlNeeds.at(0).size();i++){
-        string tempThing = Consts::stuff[Consts::lvlNeeds.at(levelNum()).at(i)];
-
-        of<<tempThing;
+        string tempThing = Consts::stuff[Consts::lvlNeeds.at(iTripTo).at(i)];
 
         for (int j=0;j<6;j++){
             if (bag->whatIsIn.at(j) == tempThing){
-                //std::cout<<tempThing<<std::endl;
-                of<<"+";
-                //
                 counter++;
             }
         }
-        of<<std::endl;
     }
-    of<<counter;
     if (counter == 6)
         return true;
     return false;
@@ -184,3 +200,7 @@ bool LevelInfo::isDoneRight()
      QString strThingName(tempThing.c_str());
      return strThingName;
  }
+int LevelInfo::getRecord()
+{
+    return record;
+}

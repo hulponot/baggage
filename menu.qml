@@ -26,7 +26,11 @@ Rectangle {
                 anchors.fill: parent;
                 onPressed: colorChangeOnClick(0);
                 onReleased: colorChangeOnClick(1);
-                onClicked: mainLd.source = "game.qml";
+                onClicked: {
+                    if (!win.silence)
+                        music.play();
+                    mainLd.source = "tutor.qml";
+                }
             }
         }
         Rectangle {
@@ -48,6 +52,21 @@ Rectangle {
                 onPressed: colorChangeOnClick(2);
                 onReleased: colorChangeOnClick(3);
                 onClicked: Qt.quit();
+            }
+        }
+    }
+    Image {
+        anchors.left: parent.left; anchors.leftMargin: 39*win.scale;
+        anchors.top: parent.top; anchors.topMargin: 42 * win.scale;
+        source: !win.silence ? "img/music_on.png":"img/music_off.png";
+        height: sourceSize.height*0.75*win.scale;
+        width: sourceSize.width*0.75*win.scale;
+        MouseArea{
+            anchors.fill: parent;
+            onClicked: {
+                if (win.silence) parent.source = "img/music_on.png";
+                else parent.source = "img/music_off.png";
+                win.silence = win.silence ? false : true;
             }
         }
     }
